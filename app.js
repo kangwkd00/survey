@@ -10,11 +10,10 @@ var flash = require('connect-flash');
 var mongoose   = require('mongoose');
 var passport = require('passport');
 var configAuth = require('./config/auth');
+var surveys = require('./routes/surveys');
 
 var routes = require('./routes/index'),
-    users = require('./routes/users'),
-    todos = require('./routes/todos'),
-    tasks = require('./routes/tasks');
+    users = require('./routes/users');
 
 var routeAuth = require('./routes/auth');
 
@@ -29,7 +28,7 @@ if (app.get('env') === 'development') {
 app.locals.moment = require('moment');
 
 // mongodb connect
-mongoose.connect('mongodb://user:asdasd@ds041394.mongolab.com:41394/nodewp');
+mongoose.connect('mongodb://kangwkd000:791004qw@ds045714.mongolab.com:45714/kangyun');
 mongoose.connection.on('error', console.log);
 
 // uncomment after placing your favicon in /public
@@ -63,8 +62,7 @@ configAuth(passport);
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/todos', todos);
-app.use('/tasks', tasks);
+app.use('/surveys', surveys);
 routeAuth(app, passport);
 
 // catch 404 and forward to error handler
