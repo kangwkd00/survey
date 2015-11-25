@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  .container
+    if survey.id
+      h1.page-header 설문수정
+    else
+      h1.page-header 설문작성
+
+      form(action = (survey.id) ? "/surveys/#{survey.id}?_method=PUT" : "/surveys", method='POST')
+        .form-group
+          label(for='email') Email address
+          input.form-control(type='email', id='email', name='email', placeholder='Email', value=survey.email)
+        .form-group
+          label(for='title') 설문 제목
+          input.form-control(type='text', id='title', name='title', placeholder='title', value=survey.title)
+        .form-group
+          label(for='content') 설문 질문 입력
+          textarea.form-control(id='content', name='content', placeholder='question here')= survey.content
+  
+        div.form-actions
+          a.btn.btn-default(href='javascript:window.history.back();') 뒤로 
+          | 
+          button.btn.btn-primary(type='submit') 완료
