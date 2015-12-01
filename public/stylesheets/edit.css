@@ -1,0 +1,66 @@
+#surveyList {
+  width: 320px;
+}
+
+#surveyList > li {
+  display: block;
+  text-indent: none;
+  list-style-type: none;
+  box-shadow: 0 0 0.3px rgba(0,0,0,0.66);
+  padding: 3px;
+  margin: 3px;
+  border-radius: 3px;
+  min-height: 30px;
+}
+li.survey-item > input {
+  min-width: 260px;
+}
+
+#surveyList > li.add {
+  background-color: #5B3;
+  font-size: 3em;
+  text-align: center;
+  text-color: white;
+  cursor: pointer;
+}
+#surveyList > li.add:hover {
+  background-color: #7F5;
+}
+
+li.survey-item > p {
+  margin: 0;
+  padding: 0;
+}
+
+li.survey-item span.index {
+  color: tomato;
+  font-weight: bold;
+  padding-right: 3px;
+}
+
+li.survey-item p.error {
+  color: hotpink;
+  background: pink;
+  padding: 3px;
+  border-radius: 3px;
+  visibility: hidden;
+}
+li.survey-item.invalid p.error {
+  visibility: visible;
+}
+li.survey-item.invalid input.question {
+  background-color: pink;
+}
+
+button.icon {
+  width: 40px;
+  height: 40px;
+  background: none transparent;
+  border: 0 none;
+}
+
+.icon.trash-can {
+  background-image: url('/images/trash-button.png');
+  background-position: center center;
+  background-size: 50px;
+}

@@ -1,12 +1,20 @@
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    Answer = require('../models/Answer');
 
 var schema = new Schema({
   title: {type: String, required: true, trim: true},
   password:{type:String},
-  email: {type: String, required: true, trim: true},
+  //email: {type: String, required: true, trim: true},
   createdAt: {type: Date, default: Date.now},
-  content: {type: String, required: true, trim: true},
+  //content: {type: String, required: true, trim: true},
+  deadline: {
+    enabled : {type: Boolean, default: false},
+    start: {type: Date, default: Date.now},
+    end: {type: Date, default: Date.now}
+  },
+  items: [String],
+  answers: [Answer.schema],
   read:{type:Number,default:0}
 }, {
   toJSON: { virtuals: true},

@@ -1,5 +1,9 @@
 extends ../layout
 
+block include-header
+  link(rel="stylesheet", type="text/css", charset="UTF-8", href="/stylesheets/show.css")
+  script(type="text/javascript", charset="UTF-8", src="/javascripts/show.js")
+
 block content
   .container
     h1.page-header= survey.title
@@ -9,6 +13,28 @@ block content
       span at #{moment(survey.createdAt).format('YYYY-MM-DD HH:mm:ss')} 
       | 
       | (조회수 #{survey.read})
-    p.well(style='white-space:pre;')= survey.content
-    
+      | 
+      | (답변수 #{survey.answers.length})
+    ul#questionList
+      - each item in survey.items
+        li.question
+          h1.title #{item}
+          textarea.answer
+    a.btn.btn-default#submit(href='#') 답변하기
+    | 
     a.btn.btn-default(href='/surveys') 목록
+    
+    - if (survey.answers.length > 0)
+      article.answers
+        h1 답변보기
+        ul.answers
+          - each answer in survey.answers
+            li.answer
+              ul
+                span.date #{answer.timestamp.toDateString()}
+                - var i = 0
+                - each item in answer.items
+                  - var question = survey.items[i++];
+                  li
+                    span.question #{question}
+                    span.answer #{item}
