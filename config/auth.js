@@ -42,6 +42,7 @@ module.exports = function(passport) {
     clientID : '611433445662072',
     clientSecret : '31aa064e91bae4d033fe4bcb88d7f209',
     callbackURL : 'http://localhost:3000/auth/facebook/callback',
+  //  callbackURL : 'https://whispering-ridge-6488.herokuapp.com/auth',
     profileFields : ["emails", "displayName", "name", "photos"]
   }, function(token, refreshToken, profile, done) {
     console.log(profile);

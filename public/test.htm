@@ -1,0 +1,32 @@
+<!Doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" http-equiv="content-type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="javascript/edit.js"></script>
+    <link href="stylesheets/edit.css" type="text/css" rel="stylesheet">
+    <title>Survey EditView Test</title>
+  </head>
+  <body>
+    Title:  <input id="surveyTitle" type="text">
+    <ul id="surveyList">
+      <li class="survey-item tpl">
+        <p><span class="index">0</span> Question :</p>
+        <input class="question" type="text"> <button class="icon trash-can delete"></button>
+        <p class="error" />
+      </li>
+
+      - each item in survey.items
+        li.survey-item
+          p
+            span.index 0
+            |Question :
+          input.question(type='text')
+            =item
+          button.icon.trash-can.delete
+          p.error
+      <li class="add">+</li>
+    </ul>
+    <button id="saveButton">Save</button>
+  </body>
+</html>
